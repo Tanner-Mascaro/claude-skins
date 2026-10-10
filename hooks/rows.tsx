@@ -853,11 +853,13 @@ function meterView(look: Look, meters: readonly Meter[]) {
     return <Svg source={built.source} alt={built.alt} width={built.width} height={built.height} />
   }
 
+  const isMinecraft = look.prefs.icons === 'minecraft'
+
   return (
     <Box flexDirection="row" columnGap={3}>
-      {usageLine(meters).map(meter => (
+      {usageLine(meters, isMinecraft).map(meter => (
         <Text color={palette.muted}>
-          <Text color={palette.user}>{meter.bar}</Text>
+          <Text color={isMinecraft ? (meter.percent >= 95 ? palette.err : meter.percent >= 80 ? palette.warn : palette.ok) : palette.user}>{meter.bar}</Text>
           {` ${meter.percent}% ${meter.label}`}
         </Text>
       ))}

@@ -71,9 +71,13 @@ export function usageSvg(meters: readonly Meter[], palette: Palette): { source: 
 }
 
 // The terminal's version: one line of block meters.
-export function usageLine(meters: readonly Meter[]): { label: string; bar: string; percent: number }[] {
+export function usageLine(meters: readonly Meter[], minecraft?: boolean): { label: string; bar: string; percent: number }[] {
   return meters.map(meter => {
     const filled = Math.round(meter.percent / 12.5)
+
+    if (minecraft) {
+      return { label: meter.label, bar: '❤️'.repeat(filled) + '🤍'.repeat(8 - filled), percent: meter.percent }
+    }
 
     return { label: meter.label, bar: '▰'.repeat(filled) + '▱'.repeat(8 - filled), percent: meter.percent }
   })
