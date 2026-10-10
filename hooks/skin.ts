@@ -23,7 +23,7 @@ export type Skin = {
   readonly light?: Palette
 }
 
-export type IconSet = 'unicode' | 'ascii'
+export type IconSet = 'unicode' | 'ascii' | 'minecraft'
 
 export type Icons = Readonly<
   Record<'running' | 'ok' | 'err' | 'interrupted' | 'done' | 'rail' | 'branch' | 'prompt', string>
@@ -52,5 +52,16 @@ export const ICONS: Readonly<Record<IconSet, Icons>> = {
     branch: '-',
     prompt: '>',
     frames: ['|', '/', '-', '\\'],
+  },
+  minecraft: {
+    running: '💛',
+    ok: '❤️',
+    err: '🖤',
+    interrupted: '💔',
+    done: '💚',
+    rail: '┃',
+    branch: '─',
+    prompt: '💎',
+    frames: ['⛏', '⛏', ' ⛏', '  ⛏', ' ⛏', '⛏'],
   },
 }

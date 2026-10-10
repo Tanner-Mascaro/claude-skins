@@ -640,7 +640,7 @@ reply width: ${lastColumns} columns`
       calm: () => void commit($, { ...state, prefs: withCalm(prefs, prefs.calm === null) }),
       tables: () => void commit($, { ...state, prefs: { ...prefs, tables: nextTables(prefs.tables) } }),
       icons: () =>
-        void commit($, { ...state, prefs: { ...prefs, icons: prefs.icons === 'unicode' ? 'ascii' : 'unicode' } }),
+        void commit($, { ...state, prefs: { ...prefs, icons: prefs.icons === 'unicode' ? 'ascii' : prefs.icons === 'ascii' ? 'minecraft' : 'unicode' } }),
       edit: slot => void update($, editingAtom, () => slot),
       paint: hex => {
         const made = withSlot(prefs.skin === 'off' ? DEFAULT_PREFS.skin : prefs.skin, custom, editing, hex)
